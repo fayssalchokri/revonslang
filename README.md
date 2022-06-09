@@ -105,3 +105,6 @@ both compiled and dynamic languages.
 * We want to extended the language features by meta programming or modding the compiler.
 * We want to code with or without garbage collection depending on our use case.
 * We want to abuse of static dispatch instead of dynamic dispatch to gain performance and correctness.
+
+## Special Thanks : 
+[Github](https://github.com), [RevonsCommunuity](https://revons.co), [Rust](https://www.rust-lang.org/)
