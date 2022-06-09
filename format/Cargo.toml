@@ -1,0 +1,41 @@
+[package]
+name = "revonslang_format"
+version = "0.18.0" # REVONSLANG
+authors = ["Inass Je <inassbenjelloun@dead.com>"]
+edition = "2018"
+
+license = "MIT"
+
+description = "Code formatting for the RevonsLang programming language"
+
+repository = "https://github.com/bluespacengineers/revonslang"
+documentation = "https://docs.rs"
+
+[dependencies]
+log = "0.4.14"
+pretty = "0.10.0"
+itertools = "0.10.1"
+codespan = "0.11.1"
+
+revonslang_base = { path = "../base", version = "0.18.0" } # REVONSLANG
+
+[dev-dependencies]
+difference = "2.0.0"
+env_logger = "0.9.0"
+expect-test = "1.1.0"
+futures = "0.3.17"
+pretty_assertions = "1.0.0"
+tokio = { version = "1.12.0", features = ["macros"] }
+walkdir = "2.3.2"
+
+revonslang_base = { path = "../base", version = "0.18.0" } # REVONSLANG
+revonslang = { path = "..", version = ">=0.9" }
+
+tensile = { version = "0.7", features = ["tokio"] }
+
+[features]
+test = []
+
+[[test]]
+name = "std"
+harness = false

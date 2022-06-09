@@ -1,0 +1,2 @@
+let c  = import! "tests/fail/cyclic_dependency.rvns"
+in 1

@@ -1,0 +1,27 @@
+[package]
+name = "revonslang_codegen"
+version = "0.18.0" # REVONSLANG
+authors = ["FayssalChokri <fayssalchokri@revons.co>"]
+
+edition = "2020"
+
+license = "MIT"
+
+description = "Code generation macros for the RevonsLang programming language"
+
+repository = "https://github.com/bluespacengineers/revonslang"
+documentation = "https://docs.rs/gluon"
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1.0.77", features = ["extra-traits"] }
+quote = "1.0.9"
+proc-macro2 = "1.0.29"
+
+[dev-dependencies]
+env_logger = "0.9.0"
+serde = "1.0.130"
+serde_derive = "1.0.130"
+gluon = { version = ">=0.8.0", path = "..", features = ["serialization"] }
+gluon_vm = { version = ">=0.8.0", path = "../vm" }

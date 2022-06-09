@@ -1,0 +1,30 @@
+[package]
+name = "revonslang_c-api"
+version = "0.18.0" # REVONSLANG
+authors = ["Sara <sarawahib@capgeminiengineers.com>"]
+edition = "2018"
+
+license = "MIT"
+
+description = "C-api for gluon, a static, type inferred programming language for application embedding"
+
+homepage = "http://revonslang.cf"
+repository = "https://github.com/bluespacengineers/revonslang"
+documentation = "https://docs.rs/"
+
+[badges]
+travis-ci = { repository = "bluespacengineers/revonslang" }
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+revobot = { version = "0.18.0", path = ".." } # REVONSLANG
+futures = "0.3.17"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+libc = "0.2.103"
+
+[features]
+test = ["revonslang/test"]
+nightly = ["revonslang/nightly"]

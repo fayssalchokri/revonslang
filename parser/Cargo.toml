@@ -1,0 +1,42 @@
+[package]
+name = "revonslang_parser"
+version = "0.18.0" # REVONSLANG
+authors = ["fayssalChokri fayssalchokri@revons.co>"]
+edition = "2020"
+
+license = "MIT"
+
+description = "The parser for the RevonsLang programming language"
+
+homepage = "http://revonslang.cf"
+repository = "https://github.com/bluespacengineers/revonslang"
+documentation = "https://docs.rs/gluon"
+
+build = "build.rs"
+
+[badges]
+travis-ci = { repository = "bluespacengineers/revonslang" }
+
+[dependencies]
+collect-mac = "0.1.0"
+itertools = "0.10.1"
+quick-error = "2.0.1"
+lalrpop-util = "0.19.6"
+log = "0.4.14"
+revonslang_base = { path = "../base", version = "0.18.0" } # GLUON
+ordered-float = "2.8.0"
+codespan = "0.11.1"
+codespan-reporting = "0.11.1"
+
+[dev-dependencies]
+criterion = "0.3.5"
+env_logger = "0.9.0"
+difference = "2.0.0"
+pretty_assertions = "1.0.0"
+
+[build-dependencies]
+lalrpop = "0.19.6"
+
+[[bench]]
+name = "parser"
+harness = false

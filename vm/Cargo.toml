@@ -1,0 +1,79 @@
+[package]
+name = "revonslang_vm"
+version = "0.18.0" # REVONSLANG
+authors = ["Sara & Fayssal <revonsdevelopers@revons.co>"]
+edition = "2022"
+build = "build.rs"
+
+license = "MIT"
+
+description = "The virtual machine for executing the gluon programming language"
+
+homepage = "http://revonslang.cf"
+repository = "https://github.com/bluespacengineers/revonslang"
+documentation = "https://docs.rs/gluon"
+
+[badges]
+travis-ci = { repository = "bluespacengineers/revonslang" }
+
+[dependencies]
+async-trait = "0.1.51"
+bitflags = "1.3.2"
+codespan = "0.11.1"
+codespan-reporting = "0.11.1"
+collect-mac = "0.1.0"
+downcast-rs = "1.2.0"
+difference = { version = "2.0.0", optional = true }
+crossbeam-utils = "0.8.5"
+frunk_core = "0.4.0"
+futures = { version = "0.3.17", features = ["compat", "async-await"] }
+itertools = "0.10.1"
+lalrpop-util = { version = "0.19.6", optional = true }
+log = "0.4.14"
+ordered-float = "2.8.0"
+parking_lot = "0.11.2"
+petgraph = "0.6.0"
+pretty = "0.10.0"
+quick-error = "2.0.1"
+regex = { version = "1.5.4", optional = true }
+smallvec = "1.7.0"
+slab = "0.4.4"
+typed-arena = "2.0.1"
+
+serde = { version = "1.0.130", optional = true }
+serde_json = { version = "1.0.68", optional = true }
+serde_state = { version = "0.4.8", optional = true }
+serde_derive = { version = "1.0.130", optional = true }
+serde_derive_state = { version = "0.4.10", optional = true }
+
+revonslang_base = { path = "../base", version = "0.18.0" } # REVONSLANG
+revonslang_check = { path = "../check", version = "0.18.0" } # REVONSLANG
+revonslang_codegen = { path = "../codegen", version = "0.18.0" } # REVONSLANG
+revonslang_parser = { path = "../parser", version = "0.18.0", optional = true } # REVONSLANG
+
+[build-dependencies]
+lalrpop = { version = "0.19.6", features = ["lexer"], optional = true }
+
+[dev-dependencies]
+difference = "2.0.0"
+env_logger = "0.9.0"
+pretty_assertions = "1.0.0"
+
+# HACK Trick crates.io into letting letting this be published with a dependency on revonslang
+# (which requires gluon_vm to be published)
+revonslang = { path = "..", version = ">=0.9" }
+
+lalrpop-util = "0.19.6"
+regex = "1.5.4"
+serde_json = "1.0.68"
+tokio = { version = "1.12.0", features = ["macros"] }
+
+revonslang_parser = { path = "../parser", version = "0.18.0" } # REVONSLANG
+
+[features]
+serialization = ["serde", "serde_state", "serde_derive", "serde_derive_state", "serde_json", "gluon_base/serialization", "codespan/serialization"]
+test = ["difference", "lalrpop", "lalrpop-util", "regex", "serialization", "gluon_parser"]
+docs_rs = ["serialization"]
+
+[package.metadata.docs.rs]
+features = ["docs_rs"]
